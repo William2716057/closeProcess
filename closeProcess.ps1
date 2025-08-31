@@ -1,10 +1,10 @@
-#check if process running 
+while ($true) {
+    $process = Get-Process -Name "notepad" -ErrorAction SilentlyContinue
+    if ($process) {
+        Stop-Process -Id $process.Id -Force
+        Write-Output "Notepad was running and has been stopped."
+    }
 
-$process = Get-Process -Name "notepad" -ErrorAction SilentlyContinue
-
-if ($process) {
-	Stop-Process -Id $process.Id -Force
-} else {
-	Write-Output "not running"
+    # needs to sleep for short time
+    Start-Sleep -Seconds 1
 }
-
